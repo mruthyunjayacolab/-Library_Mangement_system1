@@ -1,0 +1,23 @@
+.AddBook{
+
+    margin-left:200px;
+
+}
+.AddBook textarea{
+   height: 200px;
+    width: 300px;
+    border: none;
+}
+.AddBook form{
+    height: 500px;
+    width: 400px;
+}
+.AddBook input{
+    height: 50px;
+
+}
+.AddBook button{
+    height: 30px;
+    width: 200px;
+    margin: 30px;
+}
