@@ -1,16 +1,24 @@
 import '../styles/bookList.css'
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 const BookList = () => {
 
     let [book, setBook] = useState([])
-    let navigate = useNavigate()
+    let Location=useLocation()
+    
+    let nav=useNavigate()
+    let read=(id)=>{
+        if(Location.pathname =='/admin/book-list'){
 
-    let read = (id, longDescription) => {
-
-        navigate(`/admin/book-list/${id}`)
+            nav(`/admin/book-list/${id}/`)
+        }
+        else{
+            nav(`/user/book-list/${id}/`)
+        }
     }
+
+    
 
 
     useEffect(() => {
@@ -32,6 +40,8 @@ const BookList = () => {
         alert(`${id, title} Delete a book from server`)
     }
 
+
+
     return (
         <div className="BookList">
 
@@ -49,8 +59,11 @@ const BookList = () => {
                                 <h2>Author :{a.authors.toString()}</h2>
                                 <h2>Catgeay:{a.categories.toString()}</h2>
                                 <button onClick={() => read(a.id, a.longDescription)} >Read more</button>
-                                <button onClick={() => del(a.id, a.title)}>Delete</button>
+                                
 
+                                        {
+                                            Location.pathname=='admin' && <button onClick={() => del(a.id, a.title)}>Delete</button>
+                                        }
                             </div>
                             <h2>{a.pageCount}</h2>
 
